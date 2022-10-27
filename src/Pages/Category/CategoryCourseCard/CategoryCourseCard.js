@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const CourseCard = ({ course }) => {
+const CategoryCourseCard = ({ course }) => {
     const { thumbnail_url, title, details, _id } = course
     return (
         <div>
@@ -11,7 +11,7 @@ const CourseCard = ({ course }) => {
                     <h2 className="card-title">{title}</h2>
                     {
                         details.length > 250 ?
-                            <p>{details.slice(0, 250) + '...'} <Link to={`/courses/${_id}`}><button className="justify-end btn btn-primary">Details</button></Link></p>
+                            <p>{details.slice(0, 250) + '...'} <Link to={`topics/courses/${_id}`}><button className="justify-end btn btn-primary">Details</button></Link></p>
                             :
                             <p>{details}</p>
                     }
@@ -21,4 +21,4 @@ const CourseCard = ({ course }) => {
     );
 };
 
-export default CourseCard;
+export default CategoryCourseCard;

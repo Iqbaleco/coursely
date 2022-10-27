@@ -5,11 +5,11 @@ import Categories from './Categories/Categories';
 const Topics = () => {
     return (
         <div>
-            <div className="flex ...">
-                <div className="flex-auto w-24">
+            <div className="grid grid-cols-8 gap-4 m-12">
+                <div className="col-span-2">
                     <Categories></Categories>
                 </div>
-                <div className="flex-auto w-80">
+                <div className="col-span-6">
                     <Outlet></Outlet>
                 </div>
             </div>
