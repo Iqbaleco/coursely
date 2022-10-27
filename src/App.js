@@ -17,7 +17,8 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <Home></Home>
+        element: <Home></Home>,
+        loader: () => fetch('http://localhost:5000/courses')
       },
       {
         path: '/topics',
@@ -53,7 +54,7 @@ const router = createBrowserRouter([
 
 function App() {
   return (
-    <div className="App">
+    <div>
       <RouterProvider router={router}></RouterProvider>
     </div>
   );
