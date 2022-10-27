@@ -1,6 +1,7 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Categories = () => {
     const [categories, setCategories] = useState([]);
@@ -8,11 +9,16 @@ const Categories = () => {
     useEffect(() => {
         fetch('http://localhost:5000/categories')
             .then(res => res.json())
-            .then(data => console.log(data))
+            .then(data => setCategories(data))
     }, [])
     return (
         <div>
-            <h3>All categories here</h3>
+            <h3>All categories</h3>
+            {
+                categories.map(category => <p key={category.id}>
+                    <Link to={`category/${category.id}`}>{category.name}</Link>
+                </p>)
+            }
         </div>
     );
 };

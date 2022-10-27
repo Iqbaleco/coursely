@@ -7,6 +7,7 @@ import Courses from './Pages/Topics/Courses/Courses';
 import Blog from './Pages/Blog/Blog';
 import Faq from './Pages/FAQ/Faq';
 import Login from './Pages/Login/Login';
+import Category from './Pages/Category/Category';
 
 const router = createBrowserRouter([
 
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
           {
             path: '/topics',
             element: <Courses></Courses>
+          },
+          {
+            path: '/topics/category/:id',
+            element: <Category></Category>
           }
         ]
       },
@@ -39,7 +44,7 @@ const router = createBrowserRouter([
       {
         path: 'login',
         element: <Login></Login>
-      }
+      },
     ]
   }
 
