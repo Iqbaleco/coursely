@@ -29,12 +29,12 @@ const router = createBrowserRouter([
           {
             path: '/category/:id',
             element: <Category></Category>,
-            loader: ({ params }) => fetch(`http://localhost:5000/category/${params.id}`)
+            loader: ({ params }) => fetch(`https://assignment-10-server-side-iqbaleco.vercel.app/category/${params.id}`)
           },
           {
             path: '/courses/:id',
             element: <Courses></Courses>,
-            loader: ({ params }) => fetch(`http://localhost:5000/courses/${params.id}`)
+            loader: ({ params }) => fetch(`https://assignment-10-server-side-iqbaleco.vercel.app/courses/${params.id}`)
           }
         ]
       },
@@ -49,7 +49,7 @@ const router = createBrowserRouter([
       {
         path: '/access/:id',
         element: <PrivateRoute><Access></Access></PrivateRoute>,
-        loader: ({ params }) => fetch(`http://localhost:5000/courses/${params.id}`)
+        loader: ({ params }) => fetch(`https://assignment-10-server-side-iqbaleco.vercel.app/courses/${params.id}`)
       },
       {
         path: '/login',
