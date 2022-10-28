@@ -12,12 +12,12 @@ const Courses = () => {
                     <div className='gap-5'>
                         <div className='flex justify-between'>
                             <div className='flex gap-6 items-center'>
-                                <p className='w-12 rounded-full ring-4'><img className='rounded-full' src={author.img} alt="" /></p>
-                                <p>{author.name}</p>
+                                <p className='w-12 rounded-full ring-4'><img className='rounded-full' src={author?.img} alt="" /></p>
+                                <p>{author?.name}</p>
                             </div>
                             <div>
-                                <p>Date: {author.published_date}</p>
-                                <p>Rating: {rating.number}</p>
+                                <p>Date: {author?.published_date}</p>
+                                <p>Rating: {rating?.number}</p>
                             </div>
                         </div>
                     </div>
