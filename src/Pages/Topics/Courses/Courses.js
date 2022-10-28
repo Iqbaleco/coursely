@@ -1,9 +1,19 @@
 import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { useState } from 'react';
+import { Link, useLoaderData } from 'react-router-dom';
+import Access from './Access/Access';
 
 const Courses = () => {
     const courses = useLoaderData();
     const { title, author, total_view, rating, image_url, details } = courses;
+
+    const [access, setAccess] = useState([]);
+
+    // const handleAccessPage = (courses) => {
+    //     const newCourse = [...access, courses]
+    //     setAccess(newCourse);
+    // }
+
     return (
         <div>
             <div className="card w-fit bg-base-100 shadow-xl">
@@ -24,7 +34,8 @@ const Courses = () => {
                     <h2 className="card-title text-2xl">{title}</h2>
                     <p>{details}</p>
                     <div className="card-actions justify-end">
-                        <button className="btn btn-primary">Get Premium Access</button>
+                        <button className="btn btn-primary"><Link to='/access'>Get Premium Access</Link></button>
+                        {/* onClick={handleAccessPage(courses) */}
                     </div>
                 </div>
             </div>

@@ -6,7 +6,7 @@ import { AiOutlineUser } from "react-icons/ai";
 
 const Header = () => {
 
-    const { user } = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
     return (
         <div>
             <div className="navbar bg-base-100">
@@ -34,9 +34,19 @@ const Header = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <p className="btn"><Link to='/login'>Login</Link></p>
-                    <p className='w-12 rounded-full ring-4'>{user.photoURL ? <img className='rounded-full' title={user.displayName} src={user.photoURL} alt="" /> : <AiOutlineUser></AiOutlineUser>
-                    }</p>
+                    {
+                        user?.uid ?
+                            <div className='flex justify-between mr-6'>
+                                <p onClick={logOut} className="btn mr-4"><Link to='/home'>Log Out</Link></p>
+                                <p className='w-12 rounded-full ring-4 mr-4'>
+                                    {user?.photoURL ? <img className='rounded-full' title={user.displayName} src={user.photoURL} alt="" /> : <p>No image</p>
+                                    }</p>
+                            </div>
+                            :
+                            <p className="btn mr-8"><Link to='/login'>Login</Link></p>
+                    }
+
+
                 </div>
             </div>
         </div>

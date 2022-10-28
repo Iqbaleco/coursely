@@ -1,12 +1,18 @@
-import { GoogleAuthProvider } from 'firebase/auth';
+import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import React from 'react';
 import { useContext } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthContext/AuthProvider';
 
 const Login = () => {
 
-    const { googleLoginProvider } = useContext(AuthContext)
+    const { googleLoginProvider, githubLoginProvider, loginWithEP } = useContext(AuthContext)
     const googleProvider = new GoogleAuthProvider()
+    const githubProvider = new GithubAuthProvider()
+    const nevigate = useNavigate();
+    const location = useLocation();
+
+    const from = location?.state?.from?.pathname || '/home'
 
     const handleLogin = event => {
         event.preventDefault();
@@ -14,6 +20,14 @@ const Login = () => {
         const email = form.email.value;
         const password = form.password.value;
         console.log(email, password);
+
+        loginWithEP(email, password)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                form.reset();
+                nevigate(from, { replace: true })
+            })
     }
 
     const handleGoogleLogin = () => {
@@ -23,6 +37,16 @@ const Login = () => {
                 console.log(user);
             }).catch(error => console.error(error))
     }
+
+    const handleGithubLogin = () => {
+        githubLoginProvider(githubProvider)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+            }).catch(error => console.error(error))
+    }
+
+
 
     return (
         <div>
@@ -45,7 +69,7 @@ const Login = () => {
                                 </label>
                                 <input type="password" placeholder="password" name="password" className="input input-bordered" required />
                                 <label className="label">
-                                    <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
+                                    <a className="label-text-alt link link-hover"> <Link to='/register'>Don't have account yet! Register now</Link></a>
                                 </label>
                             </div>
                             <div className="form-control mt-6">
@@ -57,7 +81,7 @@ const Login = () => {
                                 <button onClick={handleGoogleLogin} className="btn btn-accent">Sign in with Google</button>
                             </div>
                             <div className="mt-6">
-                                <button className="btn btn-accent">Sign in with Github</button>
+                                <button onClick={handleGithubLogin} className="btn btn-accent">Sign in with Github</button>
                             </div>
                         </div>
                     </div>

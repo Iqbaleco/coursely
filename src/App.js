@@ -8,6 +8,9 @@ import Blog from './Pages/Blog/Blog';
 import Faq from './Pages/FAQ/Faq';
 import Login from './Pages/Login/Login';
 import Category from './Pages/Category/Category';
+import Register from './Pages/Register/Register';
+import Access from './Pages/Topics/Courses/Access/Access';
+import PrivateRoute from './Route/PrivateRoute';
 
 const router = createBrowserRouter([
 
@@ -45,9 +48,17 @@ const router = createBrowserRouter([
         element: <Faq></Faq>
       },
       {
-        path: 'login',
+        path: '/access',
+        element: <PrivateRoute><Access></Access></PrivateRoute>
+      },
+      {
+        path: '/login',
         element: <Login></Login>
       },
+      {
+        path: '/register',
+        element: <Register></Register>
+      }
     ]
   }
 
