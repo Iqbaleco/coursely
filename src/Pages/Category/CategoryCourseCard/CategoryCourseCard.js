@@ -11,7 +11,7 @@ const CategoryCourseCard = ({ course }) => {
                     <h2 className="card-title">{title}</h2>
                     {
                         details.length > 250 ?
-                            <p>{details.slice(0, 250) + '...'} <Link to={`topics/courses/${_id}`}><button className="justify-end btn btn-primary">Details</button></Link></p>
+                            <p>{details.slice(0, 250) + '...'} <Link to={`/courses/${_id}`}><button className="justify-end btn btn-primary">Details</button></Link></p>
                             :
                             <p>{details}</p>
                     }
