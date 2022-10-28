@@ -2,6 +2,7 @@ import React from 'react';
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthContext/AuthProvider';
+import { AiOutlineUser } from "react-icons/ai";
 
 const Header = () => {
 
@@ -33,8 +34,9 @@ const Header = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <a className="btn"><Link to='/login'>Login</Link></a>
-                    <p>{user?.displayName}</p>
+                    <p className="btn"><Link to='/login'>Login</Link></p>
+                    <p className='w-12 rounded-full ring-4'>{user.photoURL ? <img className='rounded-full' title={user.displayName} src={user.photoURL} alt="" /> : <AiOutlineUser></AiOutlineUser>
+                    }</p>
                 </div>
             </div>
         </div>
