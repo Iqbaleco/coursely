@@ -20,8 +20,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/home',
-        element: <Home></Home>,
-        loader: () => fetch('http://localhost:5000/courses')
+        element: <Home></Home>
       },
       {
         path: '/',
@@ -48,8 +47,9 @@ const router = createBrowserRouter([
         element: <Faq></Faq>
       },
       {
-        path: '/access',
-        element: <PrivateRoute><Access></Access></PrivateRoute>
+        path: '/access/:id',
+        element: <PrivateRoute><Access></Access></PrivateRoute>,
+        loader: ({ params }) => fetch(`http://localhost:5000/courses/${params.id}`)
       },
       {
         path: '/login',
@@ -58,6 +58,12 @@ const router = createBrowserRouter([
       {
         path: '/register',
         element: <Register></Register>
+      },
+      {
+        path: '*', element: <div className='font-bold text-2xl h-20 bg-gradient-to-r from-cyan-500 to-blue-500 bg-gradient-to-l hover:bg-gradient-to-r text-white'>
+          <h1>404!</h1>
+          <p>This page is not available</p>
+        </div>
       }
     ]
   }

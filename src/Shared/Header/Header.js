@@ -20,10 +20,12 @@ const Header = () => {
                             <li><Link to='/'>Topics</Link></li>
                             <li><Link to='/faq'>Faq</Link></li>
                             <li><Link to='/blog'>Blog</Link></li>
+                            <li><input type="checkbox" className="toggle" checked /></li>
 
                         </ul>
                     </div>
-                    <a className="btn btn-ghost normal-case text-xl"><Link to='/home'>Coursly</Link></a>
+                    <p className='w-15'>
+                        <Link to='/home'><img src="./Coursly logo.png" alt="" /></Link></p>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal p-0">
@@ -31,6 +33,7 @@ const Header = () => {
                         <li><Link to='/category/05'>Topics</Link></li>
                         <li><Link to='/faq'>Faq</Link></li>
                         <li><Link to='/blog'>Blog</Link></li>
+                        <li><input type="checkbox" className="toggle" checked /></li>
                     </ul>
                 </div>
                 <div className="navbar-end">

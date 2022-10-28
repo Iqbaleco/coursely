@@ -1,10 +1,12 @@
 import React, { useContext } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthContext/AuthProvider';
 
 const Register = () => {
 
     const { createUser } = useContext(AuthContext);
+    const [newError, setNewError] = useState('');
 
     const handleRegister = event => {
         event.preventDefault();
@@ -21,7 +23,8 @@ const Register = () => {
                 console.log(user);
                 form.reset();
             }).catch(error => {
-                console.error('error: ', error)
+                const err = error;
+                setNewError(err);
             })
     }
 
@@ -68,6 +71,7 @@ const Register = () => {
                             <div className="form-control mt-6">
                                 <button className="btn btn-accent">Register</button>
                             </div>
+                            <p>{newError}</p>
                         </form>
                     </div>
                 </div>

@@ -5,7 +5,7 @@ import Access from './Access/Access';
 
 const Courses = () => {
     const courses = useLoaderData();
-    const { title, author, total_view, rating, image_url, details } = courses;
+    const { title, author, total_view, rating, image_url, details, _id } = courses;
 
     const [access, setAccess] = useState([]);
 
@@ -34,7 +34,7 @@ const Courses = () => {
                     <h2 className="card-title text-2xl">{title}</h2>
                     <p>{details}</p>
                     <div className="card-actions justify-end">
-                        <button className="btn btn-primary"><Link to='/access'>Get Premium Access</Link></button>
+                        <button className="btn btn-primary"><Link to={`/access/${_id}`}>Get Premium Access</Link></button>
                         {/* onClick={handleAccessPage(courses) */}
                     </div>
                 </div>
